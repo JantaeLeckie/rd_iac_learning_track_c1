@@ -1,0 +1,34 @@
+.DS_Store
+node_modules
+/dist
+/.rdvue/template
+
+/tests/e2e/reports/
+selenium-debug.log
+
+# local env files
+.env.local
+.env.*.local
+
+# npm source file
+.npmrc
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+#private codes
+/.infra/meta/.aws/credentials
+/.infra/meta/.ssh/id_rsa
+/.infra/meta/.ssh/id_rsa.pub
+/.infra/meta/.ssh/known_hosts
