@@ -12,18 +12,18 @@ provider "aws" {
 }
 
 #set up vpc
-resource "aws_vpc" "jantae_vpc" {
+resource "aws_vpc" "iac_challenge2_vpc" {
   cidr_block           = "172.0.0.0/16"
   enable_dns_hostnames = true
 
   tags = {
-    Name = "Jantae VPC"
+    Name = "iac_challenge2 VPC"
   }
 }
 
 #set up public subnet
 resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.jantae_vpc.id
+  vpc_id            = aws_vpc.iac_challenge2_vpc.id
   cidr_block        = "172.0.0.0/24"
   availability_zone = "us-east-1a"
 
@@ -34,21 +34,21 @@ resource "aws_subnet" "public" {
 
 
 #set up internet gateway
-resource "aws_internet_gateway" "jantae_vpc_igw" {
-  vpc_id = aws_vpc.jantae_vpc.id
+resource "aws_internet_gateway" "iac_challenge2_vpc_igw" {
+  vpc_id = aws_vpc.iac_challenge2_vpc.id
 
   tags = {
-    Name = "Jantae VPC - Internet Gateway"
+    Name = "iac_challenge2 VPC - Internet Gateway"
   }
 }
 
 #set up route table
-resource "aws_route_table" "jantae_vpc_us_east_1_public" {
-  vpc_id = aws_vpc.jantae_vpc.id
+resource "aws_route_table" "iac_challenge2_vpc_us_east_1_public" {
+  vpc_id = aws_vpc.iac_challenge2_vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.jantae_vpc_igw.id
+    gateway_id = aws_internet_gateway.iac_challenge2_vpc_igw.id
   }
 
   tags = {
@@ -58,8 +58,8 @@ resource "aws_route_table" "jantae_vpc_us_east_1_public" {
 
 
 #link public subnet to route table
-resource "aws_route_table_association" "jantae_vpc_us_east_1_public" {
+resource "aws_route_table_association" "iac_challenge2_vpc_us_east_1_public" {
   subnet_id      = aws_subnet.public.id
-  route_table_id = aws_route_table.jantae_vpc_us_east_1_public.id
+  route_table_id = aws_route_table.iac_challenge2_vpc_us_east_1_public.id
 }
 
