@@ -1,0 +1,22 @@
+variable "region" {
+  type    = string
+  default = "us-east-1"
+}
+
+variable "vpc_subet" {
+  type    = string
+  default = "172.0.0.0/16"
+}
+
+variable "public_subet" {
+  type    = string
+  default = "172.0.0.0/24"
+}
+
+variable "gateway_subet" {
+  default = "0.0.0.0/0"
+}
+
+
+
+
